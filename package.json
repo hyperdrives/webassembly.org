@@ -19,6 +19,11 @@
     "hyperdrive": "^9.12.3",
     "random-access-http": "^2.0.0"
   },
+
+  "hyperdrive": {
+    "publicKey": "082dc40709a26a382194c14db1e1cee90156d4671300b19282df1cb9bcf1d24c"
+  },
+
   "devDependencies": {},
   "repository": {
     "type": "git",
