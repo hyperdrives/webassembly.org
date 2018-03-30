@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>WebAssembly High-Level Goals - WebAssembly</title>
+  <link rel="stylesheet" type="text/css" href="../../css/custom.css">
+  <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+</head>
+
+
+<body>
+  <header class="page-section">
+    <div class="container-narrow">
+    <div class="site-logo">
+    </div>
+    <nav class="site-nav">
+      <a class="site-nav-item btn" href="../../index.html">Overview</a>
+      <a class="site-nav-item btn" href="../../demo/index.html">Demo</a>
+      <a class="site-nav-item btn" href="../../getting-started/developers-guide/index.html">Getting Started</a>
+      
+      
+      <a class="site-nav-item btn" href="index.html">Docs</a>
+      <a class="site-nav-item btn" href="https://webassembly.github.io/spec/">Spec</a>
+      <a class="site-nav-item btn" href="../../community/feedback/index.html">Community</a>
+      <a class="site-nav-item btn" href="../../roadmap/index.html">Roadmap</a>
+      <a class="site-nav-item btn" href="../faq/index.html">FAQ</a>
+    </nav>
+    </div>
+  </header>
+  <section class="banner-update">
+    <div class="container-narrow">
+      <div class="banner-update-icon"></div>
+      <span class="banner-update-date"></span>
+      <span>WebAssembly 1.0 has shipped in 4 major browser engines.
+         <img width="48px" src="../../images/firefox.svg"> 
+         <img width="48px" src="../../images/chrome.svg"> 
+         <img width="48px" src="../../images/safari_48x48.png"> 
+         <img width="48px" src="../../images/edge.svg"> 
+         ​<a href="../../roadmap/index.html">Learn more</a></span>
+    </div>
+  </section>
+  
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-9 col-pop">
+        <h1 id="webassembly-high-level-goals">WebAssembly High-Level Goals</h1>
+
+<ol>
+  <li>Define a <a href="../portability/index.html">portable</a>, size- and load-time-efficient
+<a href="../mvp/index.html#binary-format">binary format</a> to serve as a compilation target which
+can be compiled to execute at native speed by taking advantage of common
+hardware capabilities available on a wide range of platforms, including
+<a href="https://en.wikipedia.org/wiki/Mobile_device">mobile</a> and
+<a href="https://en.wikipedia.org/wiki/Internet_of_Things">IoT</a>.</li>
+  <li>Specify and implement incrementally:
+    <ul>
+      <li>a <a href="../mvp/index.html">Minimum Viable Product (MVP)</a> for the standard with
+roughly the same functionality as <a href="http://asmjs.org">asm.js</a>, primarily
+aimed at <a href="../c-and-c++/index.html">C/C++</a>;</li>
+      <li>
+<a href="../future-features/index.html">additional features <img class="emoji" title=":unicorn:" alt=":unicorn:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f984.png" height="20" width="20" align="absmiddle"></a>,
+initially focused on key features like threads,
+zero cost exceptions, and SIMD,
+follow by additional features
+prioritized by feedback and experience, including support for languages
+other than C/C++.</li>
+    </ul>
+  </li>
+  <li>Design to execute within and integrate well with the <em>existing</em>
+<a href="../web/index.html">Web platform</a>:
+    <ul>
+      <li>maintain the versionless, <a href="../feature-test/index.html">feature-tested</a> and backwards-compatible evolution story of the Web;</li>
+      <li>execute in the same semantic universe as JavaScript;</li>
+      <li>allow synchronous calls to and from JavaScript;</li>
+      <li>enforce the same-origin and permissions security policies;</li>
+      <li>access browser functionality through the same Web APIs that are accessible
+to JavaScript; and</li>
+      <li>define a human-editable text format that is convertible to and from the
+binary format, supporting View Source functionality.</li>
+    </ul>
+  </li>
+  <li>Design to support <a href="../non-web/index.html">non-browser embeddings</a> as well.</li>
+  <li>Make a great platform:
+    <ul>
+      <li>build a new LLVM backend for WebAssembly and an accompanying
+clang port (<a href="../faq/index.html#which-compilers-can-i-use-to-build-webassembly-programs">why LLVM first?</a>);</li>
+      <li>promote other compilers and tools targeting WebAssembly; and</li>
+      <li>enable other useful <a href="../tooling/index.html">tooling</a>.</li>
+    </ul>
+  </li>
+</ol>
+
+
+      </div>
+      <div class="col-xs-12 col-lg-3">
+        <h6 class="side-title">Documentation</h6>
+        <nav class="side-nav">
+        
+        
+        <a class="side-nav-item" href="index.html">WebAssembly High-Level Goals</a>
+        
+        <a class="side-nav-item" href="../js/index.html">JavaScript API</a>
+        
+        <a class="side-nav-item" href="../binary-encoding/index.html">Binary Encoding</a>
+        
+        <a class="side-nav-item" href="../text-format/index.html">Text Format</a>
+        
+        <a class="side-nav-item" href="../semantics/index.html">Semantics</a>
+        
+        <a class="side-nav-item" href="../modules/index.html">Modules</a>
+        
+        <a class="side-nav-item" href="../faq/index.html">FAQ</a>
+        
+        <a class="side-nav-item" href="../rationale/index.html">Design Rationale</a>
+        
+        <a class="side-nav-item" href="../mvp/index.html">Minimum Viable Product</a>
+        
+        <a class="side-nav-item" href="../future-features/index.html">Features to add after the MVP</a>
+        
+        <a class="side-nav-item" href="../portability/index.html">Portability</a>
+        
+        <a class="side-nav-item" href="../security/index.html">Security</a>
+        
+        <a class="side-nav-item" href="../nondeterminism/index.html">Nondeterminism in WebAssembly</a>
+        
+        <a class="side-nav-item" href="../use-cases/index.html">Use Cases</a>
+        
+        <a class="side-nav-item" href="../c-and-c++/index.html">Guide for C/C++ developers</a>
+        
+        <a class="side-nav-item" href="../web/index.html">Web Embedding</a>
+        
+        <a class="side-nav-item" href="../non-web/index.html">Non-Web Embeddings</a>
+        
+        <a class="side-nav-item" href="../feature-test/index.html">Feature Test</a>
+        
+        <a class="side-nav-item" href="../tooling/index.html">Tooling support</a>
+        
+        <a class="side-nav-item" href="../jit-library/index.html">JIT and Optimization Library</a>
+        
+        <a class="side-nav-item" href="../dynamic-linking.1">Dynamic linking</a>
+        
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>Use Cases - WebAssembly</title>
+  <link rel="stylesheet" type="text/css" href="../../css/custom.css">
+  <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+</head>
+
+
+<body>
+  <header class="page-section">
+    <div class="container-narrow">
+    <div class="site-logo">
+    </div>
+    <nav class="site-nav">
+      <a class="site-nav-item btn" href="../../index.html">Overview</a>
+      <a class="site-nav-item btn" href="../../demo/index.html">Demo</a>
+      <a class="site-nav-item btn" href="../../getting-started/developers-guide/index.html">Getting Started</a>
+      
+      
+      <a class="site-nav-item btn" href="../high-level-goals/index.html">Docs</a>
+      <a class="site-nav-item btn" href="https://webassembly.github.io/spec/">Spec</a>
+      <a class="site-nav-item btn" href="../../community/feedback/index.html">Community</a>
+      <a class="site-nav-item btn" href="../../roadmap/index.html">Roadmap</a>
+      <a class="site-nav-item btn" href="../faq/index.html">FAQ</a>
+    </nav>
+    </div>
+  </header>
+  <section class="banner-update">
+    <div class="container-narrow">
+      <div class="banner-update-icon"></div>
+      <span class="banner-update-date"></span>
+      <span>WebAssembly 1.0 has shipped in 4 major browser engines.
+        &nbsp;<img width="48px" src="../../images/firefox.svg"/> 
+        &nbsp;<img width="48px" src="../../images/chrome.svg"/> 
+        &nbsp;<img width="48px" src="../../images/safari_48x48.png"/> 
+        &nbsp;<img width="48px" src="../../images/edge.svg"/> 
+        &nbsp;&#8203;<a href="../../roadmap/index.html">Learn&nbsp;more</a></span>
+    </div>
+  </section>
+  
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-9 col-pop">
+        <h1 id="use-cases">Use Cases</h1>
+
+<p>WebAssembly’s <a href="../high-level-goals/index.html">high-level goals</a> define <em>what</em> WebAssembly
+aims to achieve, and in <em>which order</em>. <em>How</em> WebAssembly achieves its goals is
+documented for <a href="../web/index.html">Web</a> and <a href="../non-web/index.html">non-Web</a> platforms. The following
+is an unordered and incomplete list of applications/domains/computations that
+would benefit from WebAssembly and are being considered as use cases during the
+design of WebAssembly.</p>
+
+<h2 id="inside-the-browser">Inside the browser</h2>
+
+<ul>
+  <li>Better execution for languages and toolkits that are currently cross-compiled
+to the Web (C/C++, GWT, …).</li>
+  <li>Image / video editing.</li>
+  <li>Games:
+    <ul>
+      <li>Casual games that need to start quickly.</li>
+      <li>AAA games that have heavy assets.</li>
+      <li>Game portals (mixed-party/origin content).</li>
+    </ul>
+  </li>
+  <li>Peer-to-peer applications (games, collaborative editing, decentralized and
+centralized).</li>
+  <li>Music applications (streaming, caching).</li>
+  <li>Image recognition.</li>
+  <li>Live video augmentation (e.g. putting hats on people’s heads).</li>
+  <li>VR and augmented reality (very low latency).</li>
+  <li>CAD applications.</li>
+  <li>Scientific visualization and simulation.</li>
+  <li>Interactive educational software, and news articles.</li>
+  <li>Platform simulation / emulation (ARC, DOSBox, QEMU, MAME, …).</li>
+  <li>Language interpreters and virtual machines.</li>
+  <li>POSIX user-space environment, allowing porting of existing POSIX applications.</li>
+  <li>Developer tooling (editors, compilers, debuggers, …).</li>
+  <li>Remote desktop.</li>
+  <li>VPN.</li>
+  <li>Encryption.</li>
+  <li>Local web server.</li>
+  <li>Common NPAPI users, within the web’s security model and APIs.</li>
+  <li>Fat client for enterprise applications (e.g. databases).</li>
+</ul>
+
+<h1 id="outside-the-browser">Outside the browser</h1>
+
+<ul>
+  <li>Game distribution service (portable and secure).</li>
+  <li>Server-side compute of untrusted code.</li>
+  <li>Server-side application.</li>
+  <li>Hybrid native apps on mobile devices.</li>
+  <li>Symmetric computations across multiple nodes</li>
+</ul>
+
+<h1 id="how-webassembly-can-be-used">How WebAssembly can be used</h1>
+
+<ul>
+  <li>Entire code base in WebAssembly.</li>
+  <li>Main frame in WebAssembly, but the UI is in JavaScript / HTML.</li>
+  <li>Re-use existing code by targeting WebAssembly, embedded in a larger
+JavaScript / HTML application. This could be anything from simple helper
+libraries, to compute-oriented task offload.</li>
+</ul>
+
+      </div>
+      <div class="col-xs-12 col-lg-3">
+        <h6 class="side-title">Documentation</h6>
+        <nav class="side-nav">
+        
+        
+        <a class="side-nav-item" href="../high-level-goals/index.html">WebAssembly High-Level Goals</a>
+        
+        <a class="side-nav-item" href="../js/index.html">JavaScript API</a>
+        
+        <a class="side-nav-item" href="../binary-encoding/index.html">Binary Encoding</a>
+        
+        <a class="side-nav-item" href="../text-format/index.html">Text Format</a>
+        
+        <a class="side-nav-item" href="../semantics/index.html">Semantics</a>
+        
+        <a class="side-nav-item" href="../modules/index.html">Modules</a>
+        
+        <a class="side-nav-item" href="../faq/index.html">FAQ</a>
+        
+        <a class="side-nav-item" href="../rationale/index.html">Design Rationale</a>
+        
+        <a class="side-nav-item" href="../mvp/index.html">Minimum Viable Product</a>
+        
+        <a class="side-nav-item" href="../future-features/index.html">Features to add after the MVP</a>
+        
+        <a class="side-nav-item" href="../portability/index.html">Portability</a>
+        
+        <a class="side-nav-item" href="../security/index.html">Security</a>
+        
+        <a class="side-nav-item" href="../nondeterminism/index.html">Nondeterminism in WebAssembly</a>
+        
+        <a class="side-nav-item" href="index.html">Use Cases</a>
+        
+        <a class="side-nav-item" href="../c-and-c++/index.html">Guide for C/C++ developers</a>
+        
+        <a class="side-nav-item" href="../web/index.html">Web Embedding</a>
+        
+        <a class="side-nav-item" href="../non-web/index.html">Non-Web Embeddings</a>
+        
+        <a class="side-nav-item" href="../feature-test/index.html">Feature Test</a>
+        
+        <a class="side-nav-item" href="../tooling/index.html">Tooling support</a>
+        
+        <a class="side-nav-item" href="../jit-library/index.html">JIT and Optimization Library</a>
+        
+        <a class="side-nav-item" href="../dynamic-linking.1">Dynamic linking</a>
+        
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

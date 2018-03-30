@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>Non-Web Embeddings - WebAssembly</title>
+  <link rel="stylesheet" type="text/css" href="../../css/custom.css">
+  <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+</head>
+
+
+<body>
+  <header class="page-section">
+    <div class="container-narrow">
+    <div class="site-logo">
+    </div>
+    <nav class="site-nav">
+      <a class="site-nav-item btn" href="../../index.html">Overview</a>
+      <a class="site-nav-item btn" href="../../demo/index.html">Demo</a>
+      <a class="site-nav-item btn" href="../../getting-started/developers-guide/index.html">Getting Started</a>
+      
+      
+      <a class="site-nav-item btn" href="../high-level-goals/index.html">Docs</a>
+      <a class="site-nav-item btn" href="https://webassembly.github.io/spec/">Spec</a>
+      <a class="site-nav-item btn" href="../../community/feedback/index.html">Community</a>
+      <a class="site-nav-item btn" href="../../roadmap/index.html">Roadmap</a>
+      <a class="site-nav-item btn" href="../faq/index.html">FAQ</a>
+    </nav>
+    </div>
+  </header>
+  <section class="banner-update">
+    <div class="container-narrow">
+      <div class="banner-update-icon"></div>
+      <span class="banner-update-date"></span>
+      <span>WebAssembly 1.0 has shipped in 4 major browser engines.
+        &nbsp;<img width="48px" src="../../images/firefox.svg"/> 
+        &nbsp;<img width="48px" src="../../images/chrome.svg"/> 
+        &nbsp;<img width="48px" src="../../images/safari_48x48.png"/> 
+        &nbsp;<img width="48px" src="../../images/edge.svg"/> 
+        &nbsp;&#8203;<a href="../../roadmap/index.html">Learn&nbsp;more</a></span>
+    </div>
+  </section>
+  
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-9 col-pop">
+        <h1 id="non-web-embeddings">Non-Web Embeddings</h1>
+
+<p>While WebAssembly is designed to run <a href="../web/index.html">on the Web</a>, it is
+also desirable for it to be able to execute well in other environments,
+including everything from minimal shells for testing to full-blown
+application environments e.g. on servers in datacenters, on IoT devices,
+or mobile/desktop apps. It may even be desirable to execute WebAssembly
+embedded within larger programs.</p>
+
+<p>Non-Web environments may provide different APIs than Web
+environments, which
+<a href="../feature-test/index.html">feature testing</a> and
+<a href="../dynamic-linking.1">dynamic linking</a> will make discoverable and
+usable.</p>
+
+<p>Non-Web environments may include JavaScript VMs (e.g. <a href="https://nodejs.org">node.js</a>), however
+WebAssembly is also being designed to be capable of being executed without a
+JavaScript VM present.</p>
+
+<p>The WebAssembly spec itself will not try to define any large portable libc-like
+library. However, certain features that are core to WebAssembly semantics that
+are similar to functions found in native libc <em>would</em> be part of the core
+WebAssembly spec as primitive operators (e.g., the <code class="highlighter-rouge">grow_memory</code> operator, which
+is similar to the <code class="highlighter-rouge">sbrk</code> function on many systems, and in the future, operators
+similar to <code class="highlighter-rouge">dlopen</code>).</p>
+
+<p>Where there is overlap between the Web and popular non-Web environments,
+shared specs could be proposed, but these would be separate from the WebAssembly
+spec. A symmetric example in JavaScript would be the in-progress 
+<a href="https://whatwg.github.io/loader">Loader</a> spec, which is proposed for both
+Web and node.js environments and is distinct from the JavaScript spec.</p>
+
+<p>However, for most cases it is expected that, to achieve portability at the
+source code level, communities would build libraries that mapped from a 
+source-level interface to the host environment’s builtin capabilities
+(either at build time or runtime).  WebAssembly would provide the raw building
+blocks (feature testing, <a href="../modules/index.html#imports-and-exports">builtin modules</a> and
+dynamic loading) to make these libraries possible. Two early expected examples
+are POSIX and SDL.</p>
+
+<p>In general, by keeping the non-Web path such that it doesn’t require
+Web APIs, WebAssembly could be used as a portable binary format on many
+platforms, bringing great benefits in portability, tooling and
+language-agnosticity (since it supports C/C++ level semantics).</p>
+
+      </div>
+      <div class="col-xs-12 col-lg-3">
+        <h6 class="side-title">Documentation</h6>
+        <nav class="side-nav">
+        
+        
+        <a class="side-nav-item" href="../high-level-goals/index.html">WebAssembly High-Level Goals</a>
+        
+        <a class="side-nav-item" href="../js/index.html">JavaScript API</a>
+        
+        <a class="side-nav-item" href="../binary-encoding/index.html">Binary Encoding</a>
+        
+        <a class="side-nav-item" href="../text-format/index.html">Text Format</a>
+        
+        <a class="side-nav-item" href="../semantics/index.html">Semantics</a>
+        
+        <a class="side-nav-item" href="../modules/index.html">Modules</a>
+        
+        <a class="side-nav-item" href="../faq/index.html">FAQ</a>
+        
+        <a class="side-nav-item" href="../rationale/index.html">Design Rationale</a>
+        
+        <a class="side-nav-item" href="../mvp/index.html">Minimum Viable Product</a>
+        
+        <a class="side-nav-item" href="../future-features/index.html">Features to add after the MVP</a>
+        
+        <a class="side-nav-item" href="../portability/index.html">Portability</a>
+        
+        <a class="side-nav-item" href="../security/index.html">Security</a>
+        
+        <a class="side-nav-item" href="../nondeterminism/index.html">Nondeterminism in WebAssembly</a>
+        
+        <a class="side-nav-item" href="../use-cases/index.html">Use Cases</a>
+        
+        <a class="side-nav-item" href="../c-and-c++/index.html">Guide for C/C++ developers</a>
+        
+        <a class="side-nav-item" href="../web/index.html">Web Embedding</a>
+        
+        <a class="side-nav-item" href="index.html">Non-Web Embeddings</a>
+        
+        <a class="side-nav-item" href="../feature-test/index.html">Feature Test</a>
+        
+        <a class="side-nav-item" href="../tooling/index.html">Tooling support</a>
+        
+        <a class="side-nav-item" href="../jit-library/index.html">JIT and Optimization Library</a>
+        
+        <a class="side-nav-item" href="../dynamic-linking.1">Dynamic linking</a>
+        
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>

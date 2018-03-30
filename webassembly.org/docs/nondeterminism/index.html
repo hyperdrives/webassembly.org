@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+  <title>Nondeterminism in WebAssembly - WebAssembly</title>
+  <link rel="stylesheet" type="text/css" href="../../css/custom.css">
+  <link rel="shortcut icon" href="../../favicon.ico" type="image/x-icon">
+  <link rel="icon" href="../../favicon.ico" type="image/x-icon">
+</head>
+
+
+<body>
+  <header class="page-section">
+    <div class="container-narrow">
+    <div class="site-logo">
+    </div>
+    <nav class="site-nav">
+      <a class="site-nav-item btn" href="../../index.html">Overview</a>
+      <a class="site-nav-item btn" href="../../demo/index.html">Demo</a>
+      <a class="site-nav-item btn" href="../../getting-started/developers-guide/index.html">Getting Started</a>
+      
+      
+      <a class="site-nav-item btn" href="../high-level-goals/index.html">Docs</a>
+      <a class="site-nav-item btn" href="https://webassembly.github.io/spec/">Spec</a>
+      <a class="site-nav-item btn" href="../../community/feedback/index.html">Community</a>
+      <a class="site-nav-item btn" href="../../roadmap/index.html">Roadmap</a>
+      <a class="site-nav-item btn" href="../faq/index.html">FAQ</a>
+    </nav>
+    </div>
+  </header>
+  <section class="banner-update">
+    <div class="container-narrow">
+      <div class="banner-update-icon"></div>
+      <span class="banner-update-date"></span>
+      <span>WebAssembly 1.0 has shipped in 4 major browser engines.
+         <img width="48px" src="../../images/firefox.svg"> 
+         <img width="48px" src="../../images/chrome.svg"> 
+         <img width="48px" src="../../images/safari_48x48.png"> 
+         <img width="48px" src="../../images/edge.svg"> 
+         ​<a href="../../roadmap/index.html">Learn more</a></span>
+    </div>
+  </section>
+  
+
+<section>
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-9 col-pop">
+        <h1 id="nondeterminism-in-webassembly">Nondeterminism in WebAssembly</h1>
+
+<p>WebAssembly is a <a href="../portability/index.html">portable</a> <a href="../security/index.html">sandboxed</a> platform
+with limited, local, nondeterminism.</p>
+
+<ul>
+  <li>
+<em>Limited</em>: nondeterministic execution can only occur in a small number of
+well-defined cases (described below) and, in those cases, the implementation
+may select from a limited set of possible behaviors.</li>
+  <li>
+<em>Local</em>: when nondeterministic execution occurs, the effect is local,
+there is no “spooky action at a distance”.</li>
+</ul>
+
+<p>The <a href="../rationale/index.html">rationale</a> document details why WebAssembly is designed as
+detailed in this document.</p>
+
+<p>The following is a list of the places where the WebAssembly specification
+currently admits nondeterminism:</p>
+
+<ul>
+  <li>New features will be added to WebAssembly, which means different implementations
+will have different support for each feature. This can be detected with
+<code class="highlighter-rouge">has_feature</code>, but is still a source of differences between executions.</li>
+  <li>
+<a href="../future-features/index.html#threads">When threads are added as a feature <img class="emoji" title=":unicorn:" alt=":unicorn:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f984.png" height="20" width="20" align="absmiddle"></a>, even without
+shared memory, nondeterminism will be visible through the global sequence of
+API calls. With shared memory, the result of load operators is
+nondeterministic.</li>
+  <li>Except when otherwise specified, when an arithmetic operator returns NaN,
+there is nondeterminism in determining the specific bits of the NaN. However,
+Wasm does still provide the guarantee that NaN values returned from an operation
+will not have 1 bits in their fraction field that aren’t set in any NaN values
+in the input operands, except for the most significant bit of the fraction field
+(which most operators set to 1).</li>
+  <li>Except when otherwise specified, when an arithmetic operator with a floating
+point result type receives no NaN input values and produces a NaN result
+value, the sign bit of the NaN result value is nondeterministic.</li>
+  <li>
+<a href="../future-features/index.html#fixed-width-simd">Fixed-width SIMD may want some flexibility <img class="emoji" title=":unicorn:" alt=":unicorn:" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f984.png" height="20" width="20" align="absmiddle"></a>
+    <ul>
+      <li>In SIMD.js, floating point values may or may not have subnormals flushed to
+zero.</li>
+      <li>In SIMD.js, operators ending in “Approximation” return approximations that
+may vary between platforms.</li>
+    </ul>
+  </li>
+  <li>Environment-dependent resource limits may be exhausted. A few examples:
+    <ul>
+      <li>Memory allocation may fail.</li>
+      <li>The runtime can fail to allocate a physical page when a memory location is first
+accessed (e.g. through a load or store), even if that memory was virtually reserved
+by the maximum size property of the <a href="../modules/index.html#linear-memory-section">memory section</a>.</li>
+      <li>Program stack may get exhausted (e.g., because function call depth is too big,
+or functions have too many locals, or infinite recursion). Note that this stack
+isn’t located in the program-accessible linear memory.</li>
+      <li>Resources such as handles may get exhausted.</li>
+      <li>Any other resource could get exhausted at any time. Caveat emptor.</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Users of C, C++, and similar languages should be aware that operators which
+have defined or constrained behavior in WebAssembly itself may nonetheless still
+have undefined behavior
+<a href="../c-and-c++/index.html#undefined-behavior">at the source code level</a>.</p>
+
+
+      </div>
+      <div class="col-xs-12 col-lg-3">
+        <h6 class="side-title">Documentation</h6>
+        <nav class="side-nav">
+        
+        
+        <a class="side-nav-item" href="../high-level-goals/index.html">WebAssembly High-Level Goals</a>
+        
+        <a class="side-nav-item" href="../js/index.html">JavaScript API</a>
+        
+        <a class="side-nav-item" href="../binary-encoding/index.html">Binary Encoding</a>
+        
+        <a class="side-nav-item" href="../text-format/index.html">Text Format</a>
+        
+        <a class="side-nav-item" href="../semantics/index.html">Semantics</a>
+        
+        <a class="side-nav-item" href="../modules/index.html">Modules</a>
+        
+        <a class="side-nav-item" href="../faq/index.html">FAQ</a>
+        
+        <a class="side-nav-item" href="../rationale/index.html">Design Rationale</a>
+        
+        <a class="side-nav-item" href="../mvp/index.html">Minimum Viable Product</a>
+        
+        <a class="side-nav-item" href="../future-features/index.html">Features to add after the MVP</a>
+        
+        <a class="side-nav-item" href="../portability/index.html">Portability</a>
+        
+        <a class="side-nav-item" href="../security/index.html">Security</a>
+        
+        <a class="side-nav-item" href="index.html">Nondeterminism in WebAssembly</a>
+        
+        <a class="side-nav-item" href="../use-cases/index.html">Use Cases</a>
+        
+        <a class="side-nav-item" href="../c-and-c++/index.html">Guide for C/C++ developers</a>
+        
+        <a class="side-nav-item" href="../web/index.html">Web Embedding</a>
+        
+        <a class="side-nav-item" href="../non-web/index.html">Non-Web Embeddings</a>
+        
+        <a class="side-nav-item" href="../feature-test/index.html">Feature Test</a>
+        
+        <a class="side-nav-item" href="../tooling/index.html">Tooling support</a>
+        
+        <a class="side-nav-item" href="../jit-library/index.html">JIT and Optimization Library</a>
+        
+        <a class="side-nav-item" href="../dynamic-linking.1">Dynamic linking</a>
+        
+        </nav>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
